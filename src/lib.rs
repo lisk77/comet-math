@@ -1,6 +1,10 @@
+pub use utilities::*;
 pub use vector::*;
+pub use matrix::*;
 
+mod utilities;
 mod vector;
+mod matrix;
 
 #[cfg(test)]
 mod tests {
