@@ -1,0 +1,43 @@
+Function GaussianElimination(A, b):
+    n = number of rows in A
+    
+    For j = 1 to n:
+        # Find the pivot row
+        pivot = j
+        For i = j+1 to n:
+            If abs(A[i][j]) > abs(A[pivot][j]):
+                pivot = i
+
+        # Swap the pivot row with current row j
+        SwapRows(A, j, pivot)
+        
+        # Make elements below the pivot zero
+        For i = j+1 to n:
+            factor = A[i][j] / A[j][j]
+            For k = j to n:
+                A[i][k] = A[i][k] - factor * A[j][k]
+    Return A, b
+
+n = 2
+
+for j in 0..n-1 {
+  pivot = j
+  for i in j+1..n-1 {
+    if abs(A[i,j]) > abs(A[pivot,j]) {
+      pivot = i
+    }
+  }
+
+  if pivot != j {
+    swapRows(A, j, pivot)
+  }
+
+  for i in j..n-1 {
+    factor = A[i,j] / A[j,j]
+    for k in j..n-1 {
+      A[i,k] = A[i,k] - factor * A[j,i]
+    }
+  }
+}
+
+return A
